@@ -1,4 +1,4 @@
-# THE RECYCLER
+# PROJECT Video game 2D| "The recycler"
 
 ## Description
 El juego consiste en que al "jugador" se le encomienda reciclar la máxima cantidad posible de residuos para miniminar el impacto ambiental.
@@ -56,8 +56,10 @@ Métodos
 
 ### Residuos
 Representan los elementos que se han de reciclar
+
 Propiedades:
 - tipoResiduo -> pueden ser: vidrio | orgánico | papel | plástico
+
 Métodos:
 - puntos() -> cada residuo reciclado dará diferentes puntos
 
