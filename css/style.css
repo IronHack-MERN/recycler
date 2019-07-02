@@ -1,0 +1,30 @@
+body{
+	overflow:hidden;
+}
+
+.style{
+    font-size: 20px;
+}
+
+#container{
+    background-color: #FFC0CB;
+    margin: 0auto;
+
+    position:relative;
+	margin:5vh auto;
+	width:1000px;
+	height:500px;
+}
+
+#canvas{
+    background-color: blueviolet;
+    background:url(../img/grid.jpg);
+    margin: 0auto;
+}
+
+#contenedor{
+	position:relative;
+	margin:5vh auto;
+	width:1000px;
+	height:500px;
+}
