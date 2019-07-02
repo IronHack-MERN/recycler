@@ -1,10 +1,12 @@
-// document.onload(function () {
+document.onload = (function() {
     // for control the Canvas
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
+    
+    let game = new Game({
+        ctx: ctx,
+    });
 
-    ctx.fillStyle = "red";
-    ctx.fillRect(10,10,15,15);
-// });
+    game._start();
 
-
+})();
