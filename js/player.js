@@ -9,11 +9,16 @@ class Player {
         this.color = "red";
         this.speed = 20;
         this.intervalId = undefined;
+        this.sprite = new Image();
     }
 
     _drawPlayer(ctx) {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.heigth);
+        // ctx.fillStyle = this.color;
+        // ctx.fillRect(this.position.x, this.position.y, this.width, this.heigth);
+
+        // dibujo el sprite
+        this.sprite.src = 'img/dora-sprite-2.png';
+        ctx.drawImage(this.sprite, 0, 105, 80, 100, this.position.x, this.position.y, 100, 100);
     }
 
     goUp() {
