@@ -4,6 +4,7 @@ class Game {
         this.canvas = options.canvas;
         this.player = new Player();
         this.gameOver = undefined;
+        this.residue = new Residue();
     }
 
     _assignControlsToKeys() {
@@ -42,6 +43,8 @@ class Game {
     _update() {
         this.clearCanvas();
         this.player._drawPlayer(this.ctx);
+        this.residue._drawResidue(this.ctx);
+        this.residue.moveResidue(3);
 
         if (this.intervalGame !== undefined) {
             window.requestAnimationFrame(this._update.bind(this));
@@ -52,6 +55,10 @@ class Game {
         this.player._drawPlayer(this.ctx);
         this._assignControlsToKeys();
         this.intervalGame = window.requestAnimationFrame(this._update.bind(this));
+
+        this.residue._generateRandomPosition();
+        this.residue._drawResidue(this.ctx);
+        this.residue.moveResidue(8);
     }
 
     clearCanvas() {
