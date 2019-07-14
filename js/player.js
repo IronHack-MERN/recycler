@@ -42,6 +42,7 @@ class Player {
     }
 
     stop() {
+        console.log('entro en stop');
         if (this.intervalId) {
             clearInterval(this.intervalId);
             this.intervalId = undefined;

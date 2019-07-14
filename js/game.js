@@ -11,24 +11,21 @@ class Game {
         document.onkeydown = e => {
             switch (e.keyCode) {
                 case 38: // arrow up
-                    console.log('moviendo arriba', this.player.position.y);
                     this.player.goUp();
                     break;
                 case 40: // arrow down
-                    console.log('moviendo abajo', this.player.position.y);
                     this.player.goDown();
                     break;
                 case 37: // arrow left
-                    console.log('moviendo izquierda', this.player.position.x);
                     this.player.goLeft();
                     break;
                 case 39: // arrow right
-                    console.log('moviendo derecha', this.player.position.x);
                     this.player.goRight();
                     break;
-                // case 80: // p pause
-                //     this.intervalId ? this.player.stop() : this.player.move();
-                //     break;
+                case 80: // p pause
+                    console.log('pause activated', this.player.position.x);
+                    this.player.intervalId ? this.player.stop() : this.player.move();
+                    break;
             }
         };
     }
@@ -45,6 +42,7 @@ class Game {
         this.player._drawPlayer(this.ctx);
         this.residue._drawResidue(this.ctx);
         this.residue.moveResidue(3);
+        this.collisionDetection();
 
         if (this.intervalGame !== undefined) {
             window.requestAnimationFrame(this._update.bind(this));
@@ -59,10 +57,39 @@ class Game {
         this.residue._generateRandomPosition();
         this.residue._drawResidue(this.ctx);
         this.residue.moveResidue(8);
+        this.collisionDetection();
     }
 
     clearCanvas() {
         this.canvas.width = 1000;
         this.canvas.heigth = 500;
+    }
+
+    /**
+     * return true  if detects collision
+     */
+    collisionDetection() {
+        let p = {
+            x1: this.player.position.x,
+            x2: this.player.position.x + this.player.width,
+            y1: this.player.position.y,
+            y2: this.player.position.y + this.player.heigth
+        }
+
+        let r = {
+            x1: this.residue.x,
+            x2: this.residue.x + this.residue.width,
+            y1: this.residue.y,
+            y2: this.residue.y + this.residue.heigth
+        }
+
+        if (
+            (p.y1 >= r.y1 || p.y2 >= r.y1) &&
+            (p.y1 <= r.y2 || p.y2 <= r.y2) &&
+            (p.x1 >= r.x1 || p.x2 >= r.x1) &&
+            (p.x1 <= r.x2 || p.x2 <= r.x2)
+        ) {
+            return true;
+        }
     }
 }
