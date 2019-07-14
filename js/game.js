@@ -60,6 +60,10 @@ class Game {
         this.collisionDetection();
     }
 
+    _quit(){
+        location.reload(true);
+    }
+
     clearCanvas() {
         this.canvas.width = 1000;
         this.canvas.heigth = 500;
