@@ -9,11 +9,11 @@ body{
 #container{
     background-color: #FFC0CB;
     margin: 0auto;
-
     position:relative;
 	margin:5vh auto;
 	width:1000px;
 	height:500px;
+	text-align: center
 }
 
 #canvas{
@@ -26,4 +26,27 @@ body{
 	margin:5vh auto;
 	width:1000px;
 	height:500px;
+}
+
+button{
+	border: none;
+}
+
+#btnStart{
+	background-image: url(../img/start_game.png);
+	width: 216px;
+	height: 50px;
+}
+
+#btnPause{
+	background-image: url(../img/pause.png);
+	width: 216px;
+	height: 50px;
+}
+
+#btnQuit{
+	background-image: url(../img/quit.png);
+	width: 216px;
+	height: 50px;
+	align-content: center;
 }
