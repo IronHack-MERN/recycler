@@ -1,13 +1,13 @@
 body{
 	overflow:hidden;
+	margin: 2rem;
 }
 
 .style{
     font-size: 20px;
 }
 
-#container{
-    background-color: #FFC0CB;
+#container{    
     margin: 0auto;
     position:relative;
 	margin:5vh auto;
@@ -16,37 +16,46 @@ body{
 	text-align: center
 }
 
-#canvas{
-    background:url(../img/grid.jpg);
+#canvas{ 
     margin: 0auto;
-}
-
-#contenedor{
-	position:relative;
-	margin:5vh auto;
-	width:1000px;
-	height:500px;
 }
 
 button{
 	border: none;
+	border-radius: 32px 32px 32px 32px;
+	-moz-border-radius: 32px 32px 32px 32px;
+	-webkit-border-radius: 32px 32px 32px 32px;
+	border: 0px solid #000000;
 }
 
 #btnStart{
 	background-image: url(../img/start_game.png);
-	width: 216px;
+	width: 204px;
 	height: 50px;
 }
 
 #btnPause{
 	background-image: url(../img/pause.png);
-	width: 216px;
+	width: 204px;
 	height: 50px;
 }
 
 #btnStop{
 	background-image: url(../img/quit.png);
-	width: 216px;
+	width: 204px;
 	height: 50px;
 	align-content: center;
+}
+
+#container{
+	background-image: url(../img/landing_page.png);
+}
+
+#clearLanding{
+	background-image: url(../img/paisaje.jpg);
+	margin:5vh auto;
+	width:1000px;
+	height:500px;
+	margin: 0 auto;
+	text-align: center;
 }

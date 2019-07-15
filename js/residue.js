@@ -2,10 +2,10 @@ class Residue {
     constructor() {
         this.x = 0;
         this.y = 0;
-        this.width = 5;
-        this.heigth = 5;
+        this.width = 50;
+        this.heigth = 50;
         this.right = true;
-        this.src = 'img/manzana_mordida.png';
+        this.src = 'img/res_apple.png';
         this.img = new Image();
     }
 
@@ -20,7 +20,7 @@ class Residue {
 
     _drawResidue(ctx) {
         this.img.src = this.src;
-        ctx.drawImage(this.img, this.x, this.y);
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.heigth);
 
     }
 

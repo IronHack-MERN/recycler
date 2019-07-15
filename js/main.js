@@ -13,10 +13,8 @@
 let game;
 
 function start(){
-console.log("volvemos a start");
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-
     const container = document.querySelector("#container");
     const btnStart = document.querySelector("#btnStart");
 
@@ -25,6 +23,7 @@ console.log("volvemos a start");
         canvas: canvas
     });
 
+    container.setAttribute("id","clearLanding")
     game._start();
 
     btnStart.setAttribute("id", "btnStop");
