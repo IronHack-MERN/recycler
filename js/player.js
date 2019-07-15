@@ -16,7 +16,7 @@ class Player {
         // ctx.fillStyle = this.color;
         // ctx.fillRect(this.position.x, this.position.y, this.width, this.heigth);
 
-        // dibujo el sprite
+        // draw the sprite
         this.sprite.src = 'img/dora-sprite-2.png';
         ctx.drawImage(this.sprite, 0, 105, 80, 100, this.position.x, this.position.y, 100, 100);
     }

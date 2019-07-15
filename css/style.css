@@ -1,6 +1,7 @@
 body{
 	overflow:hidden;
 	margin: 2rem;
+    font-family: 'Wendy One', sans-serif;
 }
 
 .style{
@@ -58,4 +59,14 @@ button{
 	height:500px;
 	margin: 0 auto;
 	text-align: center;
+}
+
+.score{
+	/** display: none;*/
+	display: block;
+	position: relative;
+	float: right;
+	z-index: 1;
+	background-size: cover;
+    background-position: center;
 }

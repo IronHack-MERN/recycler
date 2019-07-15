@@ -5,6 +5,7 @@ class Game {
         this.player = new Player();
         this.gameOver = undefined;
         this.residue = new Residue();
+        this.score = new Score();
     }
 
     _assignControlsToKeys() {
@@ -30,7 +31,7 @@ class Game {
         };
     }
 
-    pause() {
+    _pause() {
         if (this.intervalGame) {
             window.cancelAnimationFrame(this.intervalGame);
             this.intervalGame = undefined;
@@ -43,7 +44,7 @@ class Game {
         this.residue._drawResidue(this.ctx);
         this.residue.moveResidue(3);
         this.collisionDetection();
-
+        this.score._drawScore(this.ctx);
         if (this.intervalGame !== undefined) {
             window.requestAnimationFrame(this._update.bind(this));
         }
@@ -53,11 +54,11 @@ class Game {
         this.player._drawPlayer(this.ctx);
         this._assignControlsToKeys();
         this.intervalGame = window.requestAnimationFrame(this._update.bind(this));
-
         this.residue._generateRandomPosition();
         this.residue._drawResidue(this.ctx);
         this.residue.moveResidue(8);
         this.collisionDetection();
+        this.score._drawScore(this.ctx);
     }
 
     _quit(){
@@ -93,6 +94,9 @@ class Game {
             (p.x1 >= r.x1 || p.x2 >= r.x1) &&
             (p.x1 <= r.x2 || p.x2 <= r.x2)
         ) {
+            this.score._addPoint();
+            console.log(`Coins: ${this.score.coins} - Point: ${this.score.points}`);
+            this._pause();
             return true;
         }
     }
