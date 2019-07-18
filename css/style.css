@@ -1,7 +1,8 @@
 body{
 	overflow:hidden;
 	margin: 2rem;
-    font-family: 'Wendy One', sans-serif;
+	font-family: 'Wendy One', sans-serif;
+	color: #63BB2E;
 }
 
 .style{
@@ -14,10 +15,11 @@ body{
 	margin:5vh auto;
 	width:1000px;
 	height:500px;
-	text-align: center
+	text-align: center;
+	background-image: url(../img/landing_page.png);
 }
 
-#canvas{ 
+#canvas{
     margin: 0auto;
 }
 
@@ -48,10 +50,6 @@ button{
 	align-content: center;
 }
 
-#container{
-	background-image: url(../img/landing_page.png);
-}
-
 #clearLanding{
 	background-image: url(../img/paisaje.jpg);
 	margin:5vh auto;
@@ -59,14 +57,32 @@ button{
 	height:500px;
 	margin: 0 auto;
 	text-align: center;
+	position: relative;
 }
 
 .score{
-	/** display: none;*/
 	display: block;
 	position: relative;
 	float: right;
 	z-index: 1;
 	background-size: cover;
     background-position: center;
+}
+
+#wrapper{
+	position: relative;
+}
+
+#message{
+	background:rgba(0,56,0,0.1);
+	position: absolute;
+	margin: 0auto;
+	width:100%;
+	height:100%;
+	text-align: center;
+}
+
+h1{
+	margin-top: 150px;
+	color: #fccd37;
 }

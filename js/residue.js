@@ -26,7 +26,7 @@ class Residue {
 
     moveResidue(speed) {
         if (this.right === true) {
-            if (this.x < 1000) {
+            if (this.x < 1000-this.width) {
                 this.x += speed;
             }
             else {
@@ -34,7 +34,7 @@ class Residue {
             }
         }
         else {
-            if (this.x > 50) {
+            if (this.x > 0) {
                 this.x -= speed;
             }
             else {
@@ -42,8 +42,5 @@ class Residue {
             }
         }
     }
-
-
-
-
+    
 }

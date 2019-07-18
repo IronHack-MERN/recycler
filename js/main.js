@@ -1,21 +1,10 @@
-// document.onload = (function() {
-//     const canvas = document.getElementById('canvas');
-//     const ctx = canvas.getContext('2d');
-    
-//     let game = new Game({
-//         ctx: ctx,
-//         canvas: canvas
-//     });
-
-//     game._start();
-
-// })();
 let game;
+let container = undefined;
 
-function start(){
+function start() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    const container = document.querySelector("#container");
+    container = document.querySelector("#container");
     const btnStart = document.querySelector("#btnStart");
 
     game = new Game({
@@ -23,19 +12,18 @@ function start(){
         canvas: canvas
     });
 
-    container.setAttribute("id","clearLanding")
+    container.setAttribute("id", "clearLanding");
     game._start();
 
+    //callback function
+    game.gameOver = stop;
+
     btnStart.setAttribute("id", "btnStop");
-    btnStart.setAttribute("onClick", "stop()");
+    btnStart.addEventListener('click', stop);
 }
 
-function stop(){
-    console.log("volvemos al stop");
-    game._quit();
-    btnStop.setAttribute("id", "btnStart");
-    btnStart.setAttribute("onClick", "start()");
-
+function stop() {
+    location.reload(true);
 }
 
 

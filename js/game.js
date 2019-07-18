@@ -4,8 +4,12 @@ class Game {
         this.canvas = options.canvas;
         this.player = new Player();
         this.gameOver = undefined;
+        this.gameStart = undefined;
         this.residue = new Residue();
         this.score = new Score();
+        this.intervalId = undefined;
+        this.intervalGame = undefined;
+        this.showScore = false;
     }
 
     _assignControlsToKeys() {
@@ -24,7 +28,6 @@ class Game {
                     this.player.goRight();
                     break;
                 case 80: // p pause
-                    console.log('pause activated', this.player.position.x);
                     this.player.intervalId ? this.player.stop() : this.player.move();
                     break;
             }
@@ -43,8 +46,23 @@ class Game {
         this.player._drawPlayer(this.ctx);
         this.residue._drawResidue(this.ctx);
         this.residue.moveResidue(3);
-        this.collisionDetection();
-        this.score._drawScore(this.ctx);
+        this.score.drawScore(this.ctx);
+
+        if (this.collisionDetection()) {
+            this.score.addPoint();
+            this._pause();
+            this._start();
+        }
+
+        if (this.score.coins === 3) {
+            this._playerWin();
+            this.score.showScore(this.ctx);
+        }
+
+        if (this.showScore) {
+            this.score.showScore(this.ctx);
+        }
+
         if (this.intervalGame !== undefined) {
             window.requestAnimationFrame(this._update.bind(this));
         }
@@ -57,12 +75,29 @@ class Game {
         this.residue._generateRandomPosition();
         this.residue._drawResidue(this.ctx);
         this.residue.moveResidue(8);
-        this.collisionDetection();
-        this.score._drawScore(this.ctx);
+        this.score.drawScore(this.ctx);
+        this.score.showScore(this.ctx);
     }
 
-    _quit(){
-        location.reload(true);
+    _gameStart() {
+        this.gameStart();
+    }
+
+    _gameOver() {
+        this.gameOver();
+    }
+
+    _playerWin() {
+        this.showScore = true;
+        const wrapper = document.getElementById('clearLanding');
+        const newElement = document.createElement('div');
+        newElement.setAttribute("id", "message");
+        newElement.innerHTML = `
+                <h1 class="save-planet">Thanks for helping the planet :D</h1>
+        `;
+        wrapper.prepend(newElement);
+        this.score.drawScore(this.ctx);
+        this._pause();
     }
 
     clearCanvas() {
@@ -94,9 +129,6 @@ class Game {
             (p.x1 >= r.x1 || p.x2 >= r.x1) &&
             (p.x1 <= r.x2 || p.x2 <= r.x2)
         ) {
-            this.score._addPoint();
-            console.log(`Coins: ${this.score.coins} - Point: ${this.score.points}`);
-            this._pause();
             return true;
         }
     }
